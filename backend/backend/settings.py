@@ -80,6 +80,7 @@ TEMPLATES = [
 CORS_ALLOWED_ORIGINS = [
     "https://harmonymatching.com", #For website
     "http://localhost:3000", #For react
+    "https://www.harmonymatching.com'"
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
