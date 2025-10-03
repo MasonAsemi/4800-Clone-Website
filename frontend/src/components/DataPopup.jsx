@@ -1,8 +1,8 @@
-// frontend/src/components/DataPopup.jsx
+
 import React, { useState, useEffect } from 'react';
 
 const DataPopup = ({ isOpen, onClose }) => {
-  const [data, setData] = useState([null]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
