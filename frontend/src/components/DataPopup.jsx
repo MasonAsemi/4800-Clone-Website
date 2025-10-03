@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 
 const DataPopup = ({ isOpen, onClose }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([null]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -26,8 +26,8 @@ const DataPopup = ({ isOpen, onClose }) => {
       const result = await response.json();
 
 
-      if (result.data) {
-        setData(result.data);
+      if (result) {
+        setData(result);
       } else {
         setError(result.error || 'Failed to fetch data');
       }
@@ -75,17 +75,17 @@ const DataPopup = ({ isOpen, onClose }) => {
         {loading && <p>Loading...</p>}
         {error && <p style={{color: 'red'}}>{error}</p>}
         
-        {!loading && !error && data.length > 0 && (
+        {!loading && !error && && data && data.users && data.users.length > 0 && (
           <table border="1" style={{width: '100%', marginTop: '20px'}}>
             <thead>
               <tr>
-                {Object.keys(data[0]).map((key) => (
+                {Object.keys(data.users[0]).map((key) => (
                   <th key={key}>{key}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {data.map((row, index) => (
+              {data.users.map((row, index) => (
                 <tr key={index}>
                   {Object.values(row).map((value, i) => (
                     <td key={i}>{value?.toString() || 'N/A'}</td>
