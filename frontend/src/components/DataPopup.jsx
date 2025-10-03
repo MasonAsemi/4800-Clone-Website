@@ -24,11 +24,10 @@ const DataPopup = ({ isOpen, onClose }) => {
       }
       
       const result = await response.json();
-      
-      console.log(result);
 
-      if (result) {
-        setData(result);
+
+      if (result.data) {
+        setData(result.data);
       } else {
         setError(result.error || 'Failed to fetch data');
       }
